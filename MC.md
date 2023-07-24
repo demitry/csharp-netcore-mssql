@@ -27,7 +27,7 @@
     - [Scope [22]](#scope-22)
     - [Intermediate Theory [23]](#intermediate-theory-23)
     - [Models [24]](#models-24)
-    - [String Property Defaults [25]](#string-property-defaults-25)
+    - [Property Defaults [25]](#property-defaults-25)
     - [Namespaces [26]](#namespaces-26)
     - [Computer SQL Script [27]](#computer-sql-script-27)
     - [MacOS and Linux Users [28]](#macos-and-linux-users-28)
@@ -149,8 +149,28 @@
 ## Methods [21]
 ## Scope [22]
 ## Intermediate Theory [23]
+
 ## Models [24]
-## String Property Defaults [25]
+
+## Property Defaults [25]
+
+- third-party libraries could look for props, not for fields
+- public string Motherboard
+  - "Easy workaround" with nullable ? ,
+  - **NO!** - set a default value, or init it in ctor!
+  
+```cs
+    public class Computer
+    {
+        public string Motherboard { get; set; } = string.Empty;
+        public int CPUCores { get; set; }
+        ...
+    }
+```
+
+- code .
+- dotnet run
+
 ## Namespaces [26]
 ## Computer SQL Script [27]
 ## MacOS and Linux Users [28]
