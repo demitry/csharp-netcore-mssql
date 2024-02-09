@@ -16,6 +16,22 @@ IDbConnection dbConnection = new SqlConnection(connectionString);
 string sqlCommand = "SELECT GETDATE()";
 
 DateTime rightNow = dbConnection.QuerySingle<DateTime>(sqlCommand);
-
 Console.WriteLine(rightNow);
 
+Computer computer = new()
+{
+    ComputerId = 1,
+    Motherboard = "ASUS Prime Z390-A",
+    CPUCores = 8,
+    HasWifi = true,
+    HasLTE = false,
+    ReleaseDate = new DateTime(2019, 1, 1),
+    Price = 1500.00M,
+    VideoCard = "NVIDIA GeForce RTX 2080"
+};
+
+string insertQuery = @"INSERT INTO TutorialAppSchema.Computer 
+                       (Motherboard, CPUCores, HasWifi, HasLTE, ReleaseDate, Price, VideoCard) 
+                       VALUES (@Motherboard, @CPUCores, @HasWifi, @HasLTE, @ReleaseDate, @Price, @VideoCard)";
+
+dbConnection.Execute(insertQuery, computer);
