@@ -176,6 +176,70 @@
 ## MacOS and Linux Users [28]
 ## Windows Connection Troubleshooting [29]
 ## Database Connections [30]
+
+```sql
+-- best to use?
+IF DB_ID('dms') IS NOT NULL
+   --code mine :)
+   print 'db exists'
+
+-- From a Microsoft's script:
+DECLARE @dbname nvarchar(128)
+SET @dbname = N'Senna'
+
+IF (EXISTS (SELECT name 
+FROM master.dbo.databases 
+WHERE ('[' + name + ']' = @dbname 
+OR name = @dbname)))
+
+```
+
+```sql
+CREATE DATABASE DotNetCourseDatabase
+GO
+
+USE DotNetCourseDatabase
+GO
+
+CREATE SCHEMA TutorialAppSchema
+GO
+
+CREATE TABLE TutorialAppSchema.Computer(
+	ComputerId INT IDENTITY(1,1) PRIMARY KEY,
+	Motherboard NVARCHAR(50),
+	CPUCores INT,
+	HasWifi BIT,
+	HasLTE BIT,
+	ReleaseDate DATE,
+	Price DECIMAL(18,4),
+	VideoCard NVARCHAR(50)
+);
+```
+
+View Schema:
+
+```
+SSMS -> Object Explorer -> Database Name -> Database Diagram-> RC (Right Click) -> New Database diagram -> Add table
+```
+
+```
+
+mkdir Code
+dotnet new console -n HelloWorld
+cd HelloWorld
+dotnet run
+
+dotnet add package Dapper
+dotnet add package microsoft.data.sqlclient
+
+dotnet add package microsoft.entityframeworkcore
+dotnet add package microsoft.entityframeworkcore.sqlserver
+
+code .
+```
+
+
+
 ## Error converting data type varchar to numeric [31]
 ## Dapper Pt 1 [32]
 ## Dapper Pt 2 [33]
